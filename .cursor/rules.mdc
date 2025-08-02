@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# .NET Project Rules
+
+## Project Structure
+- Always use a solution file (.sln) and generate it using the .NET CLI
+- Use .NET 8.0 for all new projects and generate them using the .NET CLI
+- Include a .gitignore file and generate it using the .NET CLI
+
+## CLI Commands
+- Generate solution: `dotnet new sln`
+- Generate projects: `dotnet new [project-type]`
+- Generate .gitignore: `dotnet new gitignore`
+
+## Best Practices
+- Prefer CLI-generated files over manually created ones
+- Use .NET 8.0 as the target framework
+- Maintain consistent project structure 
