@@ -1,13 +1,3 @@
----
-description: 
-globs: 
-alwaysApply: false
----
----
-description: .NET Project Rules
-globs: 
-alwaysApply: true
----
 
 # .NET Project Rules
 
@@ -21,13 +11,20 @@ alwaysApply: true
 - Generate projects: `dotnet new [project-type]`
 - Generate .gitignore: `dotnet new gitignore`
 
+## Package Management
+- Do not use packages from @https://github.com/LuckyPennySoftware including MediatR and AutoMapper due to their deceptive licensing practices
+- Do not use packages from @https://github.com/devlooped such as Moq due to their licensing practices
+- Do not use packages from @https://github.com/SixLabors such as ImageSharp due to their licensing practices
+- Only use these packages if specifically requested by the user
+
 ## Code Style and Patterns
 - Use records over classes except for situations where memory size is a major concern
 - Prefer init-only properties in most cases
 - Prefer init-only over primary constructor as this ensures that client code has to specify which property is being set and eliminates confusion where client code can misunderstand which property it's setting
 - Prefer properties to be required unless there's a reasonable situation where the property might not be set
+- Prefer nullable strings over string.Empty unless there's truly a case where an empty string might be a more accurate representation of the value
 
 ## Best Practices
 - Prefer CLI-generated files over manually created ones
 - Use .NET 8.0 as the target framework
-- Maintain consistent 
+- Maintain consistent project structure 

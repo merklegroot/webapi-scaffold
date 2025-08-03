@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.InteropServices;
+using Cortex.Mediator;
+using SimpleApi.Queries;
 using SimpleApi.Models;
 
 namespace SimpleApi.Controllers;
@@ -8,19 +9,18 @@ namespace SimpleApi.Controllers;
 [Route("api/[controller]")]
 public class ServerInfoController : ControllerBase
 {
-    [HttpGet]
-    public IActionResult Get()
-    {
-        var serverInfo = new ServerInfoResponseModel
-        {
-            Environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production",
-            Framework = Environment.Version.ToString(),
-            OS = RuntimeInformation.OSDescription,
-            Architecture = RuntimeInformation.OSArchitecture.ToString(),
-            CurrentTime = DateTime.UtcNow,
-            MachineName = Environment.MachineName
-        };
+    private readonly IMediator _mediator;
 
-        return Ok(serverInfo);
+    public ServerInfoController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        var query = new GetServerInfoQuery();
+        var result = await _mediator.SendQueryAsync<GetServerInfoQuery, ServerInfoResponseModel>(query);
+        return Ok(result);
     }
 } 

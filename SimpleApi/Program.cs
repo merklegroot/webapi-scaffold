@@ -3,6 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<Cortex.Mediator.IMediator, Cortex.Mediator.Mediator>();
 
 var app = builder.Build();
 
