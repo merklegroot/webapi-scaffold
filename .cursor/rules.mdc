@@ -3,6 +3,11 @@ description:
 globs: 
 alwaysApply: false
 ---
+---
+description: .NET Project Rules
+globs: 
+alwaysApply: true
+---
 
 # .NET Project Rules
 
@@ -16,7 +21,13 @@ alwaysApply: false
 - Generate projects: `dotnet new [project-type]`
 - Generate .gitignore: `dotnet new gitignore`
 
+## Code Style and Patterns
+- Use records over classes except for situations where memory size is a major concern
+- Prefer init-only properties in most cases
+- Prefer init-only over primary constructor as this ensures that client code has to specify which property is being set and eliminates confusion where client code can misunderstand which property it's setting
+- Prefer properties to be required unless there's a reasonable situation where the property might not be set
+
 ## Best Practices
 - Prefer CLI-generated files over manually created ones
 - Use .NET 8.0 as the target framework
-- Maintain consistent project structure 
+- Maintain consistent 

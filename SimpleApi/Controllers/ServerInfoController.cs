@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
+using SimpleApi.Models;
 
 namespace SimpleApi.Controllers;
 
@@ -10,7 +11,7 @@ public class ServerInfoController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        var serverInfo = new
+        var serverInfo = new ServerInfoResponseModel
         {
             Environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production",
             Framework = Environment.Version.ToString(),
