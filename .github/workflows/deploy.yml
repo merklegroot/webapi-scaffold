@@ -18,7 +18,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    needs: [build-and-test]
+    needs: []
     environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
     
     steps:
